@@ -115,7 +115,7 @@ class Content(Clutter.ScrollActor):
         self.update()
 
     def update(self):
-        self.destroy_all_children()
+        self.destroy_all_children()  # oh noes, all teh children!
 
         for i in range(TOTAL_ROWS):
             row = Row()
