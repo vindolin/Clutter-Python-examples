@@ -1,3 +1,4 @@
+#!/usr/bin/env python -c
 from gi.repository import Clutter, GLib
 from random import randint, random
 
