@@ -1,6 +1,10 @@
 from gi.repository import Clutter, GLib
 from random import randint, random
 
+VISIBLE_ROWS = 8
+TOTAL_ROWS = 50
+MINIMUM_CONTENT_HEIGHT = 200
+
 
 def color(string):
     '''shortcut function'''
@@ -49,7 +53,7 @@ class ContentLayoutManager(Clutter.LayoutManager):
         super(ContentLayoutManager, self).__init__()
 
     def do_get_preferred_height(self, actor, for_width):
-        return 200, 0  # min_height, preferred_height
+        return MINIMUM_CONTENT_HEIGHT, 0  # min_height, preferred_height
 
     def do_get_preferred_width(self, actor, for_height):
         return 0, 0
@@ -57,7 +61,7 @@ class ContentLayoutManager(Clutter.LayoutManager):
     def do_allocate(self, actor, box, flags):
         for i, row in enumerate(actor.get_children()):
             row_box = Clutter.ActorBox()
-            row_height = box.get_height() / 8
+            row_height = box.get_height() / VISIBLE_ROWS
 
             row_box.x1 = box.x1
             row_box.x2 = box.x2
@@ -113,12 +117,12 @@ class Content(Clutter.ScrollActor):
     def update(self):
         self.destroy_all_children()
 
-        for i in range(14):
+        for i in range(TOTAL_ROWS):
             row = Row()
             row.set_layout_manager(self.row_layout)
 
             total_length = 0
-            for j in range(1000):
+            while True:
                 item = Item(random())
                 total_length += item.length
                 row.add_child(item)
