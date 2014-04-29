@@ -122,7 +122,7 @@ class Content(Clutter.ScrollActor):
             row.set_layout_manager(self.row_layout)
 
             total_length = 0
-            while True:
+            while True:  # add items until total length is 1
                 item = Item(random())
                 total_length += item.length
                 row.add_child(item)
