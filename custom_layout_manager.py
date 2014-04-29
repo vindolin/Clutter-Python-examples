@@ -6,10 +6,7 @@ VISIBLE_ROWS = 8
 TOTAL_ROWS = 50
 MINIMUM_CONTENT_HEIGHT = 200
 
-
-def color(string):
-    '''shortcut function'''
-    return Clutter.color_from_string(string)[1]
+color = lambda string: Clutter.color_from_string(string)[1]  # shortcut
 
 
 def random_color(random_alpha=False):
