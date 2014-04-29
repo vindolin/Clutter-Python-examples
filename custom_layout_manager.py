@@ -191,7 +191,7 @@ if __name__ == '__main__':
     # bind the size of vbox to the size of the stage
     vbox.add_constraint(Clutter.BindConstraint.new(stage, Clutter.BindCoordinate.SIZE, 0.0))
 
-    # update the content of vobx every 4 seconds
+    # update the content of vbox every 4 seconds
     Clutter.threads_add_timeout(GLib.PRIORITY_DEFAULT, 4000, vbox.content.update)
 
     stage.show()
