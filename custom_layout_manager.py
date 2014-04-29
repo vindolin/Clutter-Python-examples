@@ -123,7 +123,7 @@ class Content(Clutter.ScrollActor):
 
             total_length = 0
             while True:  # add items until total length is 1
-                item = Item(random())
+                item = Item(random() / 3)
                 total_length += item.length
                 row.add_child(item)
                 if total_length >= 1.0:
