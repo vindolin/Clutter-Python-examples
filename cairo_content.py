@@ -5,7 +5,7 @@ import math
 
 
 def rounded_rect(ctx, x, y, width, height, radius, line_width):
-    # FIXME the line with have to be included into the calculation
+    # FIXME the line with has to be included into the calculation
     # or else the lines overlap with small radii
     line_width
     degrees = math.pi / 180.0
