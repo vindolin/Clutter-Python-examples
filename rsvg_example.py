@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from gi.repository import Clutter, GLib, Rsvg
+from gi.repository import Clutter, Rsvg
 import cairo
 
 color = lambda string: Clutter.color_from_string(string)[1]  # shortcut
