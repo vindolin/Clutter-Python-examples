@@ -77,15 +77,14 @@ class CairoActor(Clutter.Actor):
         ctx.stroke()
 
 
-def stage_key(element, event):
-    if event.keyval == Clutter.Escape:
-        clutter_quit()
-
-
-def clutter_quit(*args):
-    Clutter.main_quit()
-
 if __name__ == '__main__':
+    def stage_key(element, event):
+        if event.keyval == Clutter.Escape:
+            clutter_quit()
+
+    def clutter_quit(*args):
+        Clutter.main_quit()
+
     Clutter.init([])
     stage = Clutter.Stage()
     stage.set_size(800, 500)

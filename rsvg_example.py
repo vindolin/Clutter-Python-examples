@@ -2,6 +2,8 @@
 from gi.repository import Clutter, Rsvg
 import cairo
 
+# FIXME scale SVG to the size of the actor and add resizing
+
 color = lambda string: Clutter.color_from_string(string)[1]  # shortcut
 
 
@@ -32,15 +34,15 @@ class CairoActor(Clutter.Actor):
         ctx.paint()
 
 
-def stage_key(element, event):
-    if event.keyval == Clutter.Escape:
-        clutter_quit()
-
-
-def clutter_quit(*args):
-    Clutter.main_quit()
-
 if __name__ == '__main__':
+
+    def stage_key(element, event):
+        if event.keyval == Clutter.Escape:
+            clutter_quit()
+
+    def clutter_quit(*args):
+        Clutter.main_quit()
+
     Clutter.init([])
     stage = Clutter.Stage()
     stage.set_size(500, 500)
