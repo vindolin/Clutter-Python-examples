@@ -64,6 +64,11 @@ if __name__ == '__main__':
     container.set_background_color(color('pink'))
 
     nine_patch_actor = NinePatchActor('9patch_test.png')
+    margin = 50
+    nine_patch_actor.set_margin_top(margin)
+    nine_patch_actor.set_margin_right(margin)
+    nine_patch_actor.set_margin_bottom(margin)
+    nine_patch_actor.set_margin_left(margin)
 
     container.add_child(nine_patch_actor)
     stage.add_child(container)
