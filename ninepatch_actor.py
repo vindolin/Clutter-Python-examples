@@ -1,5 +1,5 @@
 from gi.repository import Clutter, Cogl
-import ninepatch
+from ninepatch import ninepatch
 
 color = lambda string: Clutter.color_from_string(string)[1]  # shortcut
 
@@ -17,7 +17,7 @@ class NinePatchActor(Clutter.Actor):
     def on_allocation(self, *_):
         image = Clutter.Image()
         try:
-            scaled_image = ninepatch.scale_image('9patch_test.png', int(self.get_width()), int(self.get_height()))
+            scaled_image = ninepatch.scale_image('ninepatch/9patch_test.png', int(self.get_width()), int(self.get_height()))
 
             image.set_data(
                 scaled_image.tostring(),
