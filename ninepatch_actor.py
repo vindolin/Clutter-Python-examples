@@ -10,9 +10,12 @@ class NinePatchActor(Clutter.Actor):
     '''9 patch actor'''
     __gtype_name__ = 'NinePatchActor'
 
-    def __init__(self, image_filename):
+    def __init__(self, image_filename, stage=None):
         super(NinePatchActor, self).__init__()
         self.ninepatch = ninepatch.Ninepatch(image_filename)
+        self.stage = stage
+        if self.stage:
+            self.old_stage_title = self.stage.get_title()
 
         self.connect('notify::allocation', self.on_allocation)
 
@@ -29,14 +32,13 @@ class NinePatchActor(Clutter.Actor):
                 self.get_width() * 4,
             )
 
-            self.set_content_scaling_filters(
-                Clutter.ScalingFilter.TRILINEAR,
-                Clutter.ScalingFilter.LINEAR
-            )
             self.set_content(image)
+            if self.stage:
+                self.stage.set_title(self.old_stage_title)
 
         except ninepatch.ScaleError:
-            pass  # just scale the last computed image down
+            if self.stage:
+                self.stage.set_title('9 Patch is undersized!')
 
 
 if __name__ == '__main__':
@@ -65,7 +67,7 @@ if __name__ == '__main__':
     container = Clutter.Actor()
     container.set_background_color(color('pink'))
 
-    nine_patch_actor = NinePatchActor('ninepatch/9patch_test.png')
+    nine_patch_actor = NinePatchActor('ninepatch/9patch_test.png', stage)
     margin = 50
     nine_patch_actor.set_margin_top(margin)
     nine_patch_actor.set_margin_right(margin)
