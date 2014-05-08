@@ -10,14 +10,14 @@ class NinePatchActor(Clutter.Actor):
 
     def __init__(self, image_filename):
         super(NinePatchActor, self).__init__()
-        self.image_filename = image_filename
+        self.ninepatch = ninepatch.Ninepatch(image_filename)
 
         self.connect('notify::allocation', self.on_allocation)
 
     def on_allocation(self, *_):
         image = Clutter.Image()
         try:
-            scaled_image = ninepatch.scale_image('ninepatch/9patch_test.png', int(self.get_width()), int(self.get_height()))
+            scaled_image = self.ninepatch.render(int(self.get_width()), int(self.get_height()))
 
             image.set_data(
                 scaled_image.tostring(),
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     container = Clutter.Actor()
     container.set_background_color(color('pink'))
 
-    nine_patch_actor = NinePatchActor('9patch_test.png')
+    nine_patch_actor = NinePatchActor('ninepatch/9patch_test.png')
     margin = 50
     nine_patch_actor.set_margin_top(margin)
     nine_patch_actor.set_margin_right(margin)
