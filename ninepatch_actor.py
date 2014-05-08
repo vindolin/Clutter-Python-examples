@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from gi.repository import Clutter, Cogl
 from ninepatch import ninepatch
 
@@ -74,8 +76,8 @@ if __name__ == '__main__':
     stage.add_child(container)
 
     # bind the size of cairo_actor to the size of the stage
-    container.add_constraint(Clutter.BindConstraint.new(stage, Clutter.BindCoordinate.SIZE, 0.0))
-    nine_patch_actor.add_constraint(Clutter.BindConstraint.new(container, Clutter.BindCoordinate.SIZE, 0.0))
+    container.add_constraint(Clutter.BindConstraint.new(stage, Clutter.BindCoordinate.SIZE, 0))
+    nine_patch_actor.add_constraint(Clutter.BindConstraint.new(container, Clutter.BindCoordinate.SIZE, 0))
 
     stage.show()
     Clutter.main()
