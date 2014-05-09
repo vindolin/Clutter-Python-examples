@@ -40,6 +40,12 @@ class NinePatchActor(Clutter.Actor):
             if self.stage:
                 self.stage.set_title('9 Patch is undersized!')
 
+    def do_get_preferred_width(self, for_width):
+        return (self.ninepatch.min_scale_size['x'], 0)
+
+    def do_get_preferred_height(self, for_height):
+        return (self.ninepatch.min_scale_size['y'], 0)
+
 
 if __name__ == '__main__':
 
@@ -66,8 +72,11 @@ if __name__ == '__main__':
 
     container = Clutter.Actor()
     container.set_background_color(color('pink'))
+    container.set_layout_manager(Clutter.BoxLayout())
 
     nine_patch_actor = NinePatchActor('ninepatch_bubble.png', stage)
+    nine_patch_actor.set_x_expand(True)
+    nine_patch_actor.set_y_expand(True)
     margin = 50
     nine_patch_actor.set_margin_top(margin)
     nine_patch_actor.set_margin_right(margin)
@@ -79,7 +88,7 @@ if __name__ == '__main__':
 
     # bind the size of cairo_actor to the size of the stage
     container.add_constraint(Clutter.BindConstraint.new(stage, Clutter.BindCoordinate.SIZE, 0))
-    nine_patch_actor.add_constraint(Clutter.BindConstraint.new(container, Clutter.BindCoordinate.SIZE, 0))
+    # nine_patch_actor.add_constraint(Clutter.BindConstraint.new(container, Clutter.BindCoordinate.SIZE, 0))
 
     stage.show()
     Clutter.main()
