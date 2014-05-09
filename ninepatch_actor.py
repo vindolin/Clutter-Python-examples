@@ -25,11 +25,11 @@ class NinePatchActor(Clutter.Actor):
             scaled_image = self.ninepatch.render(int(self.get_width()), int(self.get_height()))
 
             image.set_data(
-                scaled_image.tostring(),
-                Cogl.PixelFormat.RGBA_8888,
-                self.get_width(),
-                self.get_height(),
-                self.get_width() * 4,
+                data=scaled_image.tostring(),
+                pixel_format=Cogl.PixelFormat.RGBA_8888,
+                width=self.get_width(),
+                height=self.get_height(),
+                row_stride=self.get_width() * 4,
             )
 
             self.set_content(image)
