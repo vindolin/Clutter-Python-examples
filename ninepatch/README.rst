@@ -1,7 +1,11 @@
 Slice Android style 9-patch images into tiles and resize them into a scaled version
 ------------
+
 .. image:: https://travis-ci.org/vindolin/ninepatch.svg?branch=master
+   :width: 90
+   :alt: Travis CI
    :target: https://travis-ci.org/vindolin/ninepatch
+
 
 see https://developer.android.com/tools/help/draw9patch.html
 
