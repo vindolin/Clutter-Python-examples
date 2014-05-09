@@ -67,7 +67,7 @@ if __name__ == '__main__':
     container = Clutter.Actor()
     container.set_background_color(color('pink'))
 
-    nine_patch_actor = NinePatchActor('9patch_bubble.png', stage)
+    nine_patch_actor = NinePatchActor('ninepatch_bubble.png', stage)
     margin = 50
     nine_patch_actor.set_margin_top(margin)
     nine_patch_actor.set_margin_right(margin)
