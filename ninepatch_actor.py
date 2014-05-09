@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from gi.repository import Clutter, Cogl
-from ninepatch import ninepatch
+import ninepatch
 
 color = lambda string: Clutter.color_from_string(string)[1]  # shortcut
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     container = Clutter.Actor()
     container.set_background_color(color('pink'))
 
-    nine_patch_actor = NinePatchActor('ninepatch/9patch_test.png', stage)
+    nine_patch_actor = NinePatchActor('9patch_test.png', stage)
     margin = 50
     nine_patch_actor.set_margin_top(margin)
     nine_patch_actor.set_margin_right(margin)
