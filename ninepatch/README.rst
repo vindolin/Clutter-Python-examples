@@ -37,6 +37,12 @@ save the scaled image to a new file
 
     $ ninepatch 9patch_test.png 300 300 scaled.png
 
+There's also a Tkinter viewer you can use to preview your 9-patch images:
+
+::
+
+    $ ninepatch_viewer 9patch_test.png
+
 Notes
 -----
 
