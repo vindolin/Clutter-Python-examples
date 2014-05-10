@@ -6,7 +6,7 @@ setup(
     version='0.1.4',
     author='Thomas Schüßler',
     author_email='vindolin@gmail.com',
-    packages=['ninepatch', 'ninepatch.test'],
+    packages=['ninepatch'],
     scripts=['bin/ninepatch', 'bin/ninepatch_viewer'],
     url='https://github.com/vindolin/ninepatch',
     license=open('LICENSE').read(),
