@@ -1,12 +1,12 @@
-Slice Android style 9-patch images into tiles and resize them into a scaled version
------------------------------------------------------------------------------------
+Slice Android style 9-patch images into tiles, resize and interactively preview them.
+-------------------------------------------------------------------------------------
 
 .. image:: https://travis-ci.org/vindolin/ninepatch.svg?branch=master
    :width: 90
    :alt: Travis CI
    :target: https://travis-ci.org/vindolin/ninepatch
 
-see https://developer.android.com/tools/help/draw9patch.html
+See https://developer.android.com/tools/help/draw9patch.html for a 9-patch description.
 
 .. image:: https://raw.githubusercontent.com/vindolin/ninepatch/master/ninepatch/data/ninepatch_bubble.png
    :width: 320
@@ -26,32 +26,51 @@ Python usage
 
 Command line usage
 ------------------
-Your image must be a png image with a transparent background. The scale
-guide color must be 100% opaque black.
+Your image must be a PNG image with a transparent background.
+The scale and fill guide color must be 100% opaque black.
 
-open the scaled image in a viewer
+Scale and open image in a viewer (PIL image.show()):
 
 ::
 
     $ ninepatch 9patch_test.png 300 300
 
-save the scaled image to a new file
+Save the scaled image to a new file:
 
 ::
 
     $ ninepatch 9patch_test.png 300 300 scaled.png
 
-There's also a Tkinter viewer you can use to interactively preview your 9-patch images:
+
+Interactively resize and preview an image in a Tkinter viewer:
 
 ::
 
     $ ninepatch_viewer 9patch_test.png
 
-tk8.5-dev has to be installed before installing with pip.
+    or just:
 
-Ubuntu: sudo apt-get install tk8.5-dev
+    $ ninepatch_viewer
 
-You can reinstall with: "pip install -I ninepatch" after fixing this.
+    without arguments to see the demo image
+
+
+If you want to use the viewer then python-pil.imagetk has to be installed.
+
+On Ubuntu do:
+
+::
+
+  $ sudo apt-get install python-pil.imagetk
+
+
+If you want to install into a virtualenv, pip needs the following packages to compile PIL with Tkinter support:
+
+::
+
+   $  sudo apt-get install python-tk tk8.6-dev
+
+(You can trigger a recompile of PIL with: "pip install -I ninepatch")
 
 
 Changelog
@@ -66,8 +85,7 @@ Changelog
 
 Notes
 -----
-You can see the module in action in the ninepatch\_actor.py from my
-Clutter example project:
+I wrote this tool for the ninepatch\_actor.py in my Clutter example project:
 https://github.com/vindolin/Clutter-Python-examples
 
 Issues
