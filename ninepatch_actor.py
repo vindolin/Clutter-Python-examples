@@ -67,7 +67,7 @@ if __name__ == '__main__':
     container.set_background_color(color('pink'))
     container.set_layout_manager(Clutter.BoxLayout())
 
-    nine_patch_actor = NinePatchActor('ninepatch_bubble.png', stage)
+    nine_patch_actor = NinePatchActor('ninepatch_bubble.9.png', stage)
     nine_patch_actor.set_x_expand(True)
     nine_patch_actor.set_y_expand(True)
     margin = 50
