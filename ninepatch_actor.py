@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from gi.repository import Clutter, Cogl
-import ninepatch
+import ninepatch  # pip install ninepatch
 
 color = lambda string: Clutter.color_from_string(string)[1]  # shortcut
 
