@@ -17,19 +17,17 @@ class NinePatchActor(Clutter.Actor):
         if self.stage:
             self.old_stage_title = self.stage.get_title()
 
-        self.connect('notify::allocation', self.on_allocation)
-
-    def on_allocation(self, *_):
+    def do_allocate(self, box, flags):
         image = Clutter.Image()
         try:
-            scaled_image = self.ninepatch.render(int(self.get_width()), int(self.get_height()))
+            scaled_image = self.ninepatch.render(int(box.get_width()), int(box.get_height()))
 
             image.set_data(
                 data=scaled_image.tostring(),
                 pixel_format=Cogl.PixelFormat.RGBA_8888,
-                width=self.get_width(),
-                height=self.get_height(),
-                row_stride=self.get_width() * 4,
+                width=box.get_width(),
+                height=box.get_height(),
+                row_stride=box.get_width() * 4,
             )
 
             self.set_content(image)
@@ -39,12 +37,7 @@ class NinePatchActor(Clutter.Actor):
         except ninepatch.ScaleError:
             if self.stage:
                 self.stage.set_title('9 Patch is undersized!')
-
-    def do_get_preferred_width(self, for_width):
-        return (self.ninepatch.min_scale_size['x'], 0)
-
-    def do_get_preferred_height(self, for_height):
-        return (self.ninepatch.min_scale_size['y'], 0)
+        self.set_allocation(box, flags)
 
 
 if __name__ == '__main__':
